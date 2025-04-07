@@ -232,3 +232,87 @@ Output
 | 2           | BAT           |
 | 3           | CAT           |
 
+
+## #String Functions
+- There are more than 30 Functions in the String Functions
+- Like `CONCAT`, `LEN`, `LIKE` etc 
+
+| Function        | Description                                                                 |
+|-----------------|-----------------------------------------------------------------------------|
+| `CONCAT(str1, str2, ...)` | Concatenates two or more strings together.                          |
+| `LEN(str)`     | Returns the length of a string.                               |
+| `UPPER(str)`      | Converts a string to uppercase.                                           |
+| `LOWER(str)`      | Converts a string to lowercase.                                           |
+| `SUBSTRING(str, pos, len)` | Extracts a substring of a specified length from a string starting at a given position. |
+| `LEFT(str, len)`  | Returns the leftmost specified number of characters of a string.          |
+| `RIGHT(str, len)` | Returns the rightmost specified number of characters of a string.         |
+| `TRIM([remstr FROM] str)` | Removes leading and trailing spaces (or specified characters) from a string. |
+| `LTRIM(str)`      | Removes leading spaces from a string.                                     |
+| `RTRIM(str)`      | Removes trailing spaces from a string.                                    |
+| `REPLACE(str, from_str, to_str)` | Replaces all occurrences of a substring within a string with another substring. |
+| `INSTR(str, substr)` | Returns the starting position of the first occurrence of a substring within a string (0 if not found). |
+| `LIKE` operator   | Used for pattern matching using wildcards (`%` for any sequence, `_` for a single character). |
+
+- Make Example Table 
+```
+
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    fname VARCHAR(50),
+    lname VARCHAR(50),
+    desig VARCHAR(50),
+    dept VARCHAR(50)
+);
+
+INSERT INTO employees (emp_id, fname, lname, desig, dept)
+VALUES (101, 'Raju', 'Rastogi', 'Manager', 'Loan');
+
+INSERT INTO employees (emp_id, fname, lname, desig, dept)
+VALUES (102, 'Sham', 'Mohan', 'Cashier', 'Cash');
+
+INSERT INTO employees (emp_id, fname, lname, desig, dept)
+VALUES (103, 'Baburao', 'Apte', 'Associate', 'Loan');
+
+INSERT INTO employees (emp_id, fname, lname, desig, dept)
+VALUES (104, 'Paul', 'Philip', 'Accountant', 'Account');
+
+INSERT INTO employees (emp_id, fname, lname, desig, dept)
+VALUES (105, 'Alex', 'Watt', 'Associate', 'Deposit');
+```
+
+`CONCAT` for eg ::
+
+- Combining **fname** And **lname**
+```
+SELECT emp_id CONCAT(fname,lname) as FullName
+FROM employees;
+```
+
+ Output for CONCAT Example:
+
+| emp_id | FullName      |
+|--------|---------------|
+| 101    | RajuRastogi   |
+| 102    | ShamMohan     |
+| 103    | BaburaoApte   |
+| 104    | PaulPhilip    |
+| 105    | AlexWatt      |
+
+`CONCAT_WS` for eg ::
+- It has a seperator between All The strings
+
+```
+SELECT emp_id CONCAT_WS("-",fname,lname) as FullName
+FROM employees;
+```
+
+Output for CONCAT_WS Example:
+
+| emp_id | FullName      |
+|--------|---------------|
+| 101    | Raju-Rastogi  |
+| 102    | Sham-Mohan    |
+| 103    | Baburao-Apte  |
+| 104    | Paul-Philip   |
+| 105    | Alex-Watt     |
+
